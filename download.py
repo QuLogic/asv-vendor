@@ -30,6 +30,10 @@ VENDOR_ASSETS = {
 
 LICENSE_FILES = {
     "stupidtable.js": "https://github.com/joequery/Stupid-Table-Plugin/raw/1.0.1/LICENSE",
+    "jquery.flot-0.8.2.min.js": "https://github.com/flot/flot/raw/v0.8.2/LICENSE.txt",
+    "jquery.flot-0.8.2.time.min.js": "https://github.com/flot/flot/raw/v0.8.2/LICENSE.txt",
+    "jquery.flot-0.8.2.selection.min.js": "https://github.com/flot/flot/raw/v0.8.2/LICENSE.txt",
+    "jquery.flot-0.8.2.categories.min.js": "https://github.com/flot/flot/raw/v0.8.2/LICENSE.txt",
 }
 
 VENDOR_DIR = os.path.abspath(os.path.dirname(__file__))
