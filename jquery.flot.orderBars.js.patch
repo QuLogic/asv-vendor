@@ -1,0 +1,14 @@
+--- jquery.flot.orderBars.js.new	2018-08-17 17:04:59.787127715 +0200
++++ jquery.flot.orderBars.js.new	2018-08-17 17:09:13.291107457 +0200
+@@ -76,6 +76,11 @@
+         function getAxeMinMaxValues(series,AxeIdx){
+             var minMaxValues = new Array();
+             for(var i = 0; i < series.length; i++){
++		if (typeof series[i].data[0] != "number") {
++		    minMaxValues[0] = 0;
++		    minMaxValues[1] = series.length;
++		    return minMaxValues;
++		}
+                 minMaxValues[0] = series[i].data[0][AxeIdx];
+                 minMaxValues[1] = series[i].data[series[i].data.length - 1][AxeIdx];
+             }

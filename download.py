@@ -8,7 +8,6 @@ import os
 import shutil
 import subprocess
 import sys
-import ast
 try:
     from urllib2 import urlopen
 except ImportError:
@@ -22,7 +21,15 @@ VENDOR_ASSETS = {
     "jquery.flot-0.8.2.selection.min.js": "https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.selection.min.js",
     "jquery.flot-0.8.2.categories.min.js": "https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.categories.min.js",
     "bootstrap-3.1.0.min.js": "https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js",
-    "bootstrap-3.1.0.min.css": "https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
+    "bootstrap-3.1.0.min.css": "https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css",
+    "stupidtable.js": "https://github.com/joequery/Stupid-Table-Plugin/raw/1.0.1/stupidtable.js",
+    "jquery.flot.axislabels.js": "https://github.com/xuanluo/flot-axislabels/raw/master/jquery.flot.axislabels.js",
+    "jquery.flot.orderBars.js": "https://www.benjaminbuffet.com/public/js/jquery.flot.orderBars.js",
+    "md5.js": "https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.10.0/js/md5.js",
+}
+
+LICENSE_FILES = {
+    "stupidtable.js": "https://github.com/joequery/Stupid-Table-Plugin/raw/1.0.1/LICENSE",
 }
 
 VENDOR_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -38,14 +45,36 @@ def download_assets():
         if os.path.isfile(dst):
             continue
 
-        print("Downloading {0} to asv/www/vendor...".format(asset))
+        if fn in LICENSE_FILES:
+            license_asset = LICENSE_FILES[fn]
+
+            print("Downloading {0} into {1}...".format(license_asset, fn))
+
+            fsrc = urlopen(LICENSE_FILES[fn])
+            try:
+                with open(dst + ".new", "wb") as fdst:
+                    fdst.write('/*\n')
+                    shutil.copyfileobj(fsrc, fdst)
+                    fdst.write('*/\n\n'.format(license_asset))
+            finally:
+                fsrc.close()
+            mode = 'ab'
+        else:
+            mode = 'wb'
+
+        print("Downloading {0} to {1}...".format(asset, fn))
 
         fsrc = urlopen(asset)
         try:
-            with open(dst + ".new", 'wb') as fdst:
+            with open(dst + ".new", mode) as fdst:
                 shutil.copyfileobj(fsrc, fdst)
         finally:
             fsrc.close()
+
+        patch = dst + '.patch'
+        if os.path.isfile(patch):
+            # Patch
+            subprocess.check_call(['patch', dst + '.new', patch])
 
         # Usually atomic
         os.rename(dst + ".new", dst)
