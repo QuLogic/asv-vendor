@@ -15,7 +15,7 @@ except ImportError:
 
 
 VENDOR_ASSETS = {
-    "jquery-1.11.0.min.js": "https://code.jquery.com/jquery-1.11.0.min.js",
+    "jquery-3.3.1.min.js": "https://code.jquery.com/jquery-3.3.1.min.js",
     "jquery.flot-0.8.3.min.js": "https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js",
     "jquery.flot-0.8.3.time.min.js": "https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.time.min.js",
     "jquery.flot-0.8.3.selection.min.js": "https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.selection.min.js",
