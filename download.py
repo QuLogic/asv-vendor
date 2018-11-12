@@ -16,10 +16,10 @@ except ImportError:
 
 VENDOR_ASSETS = {
     "jquery-1.11.0.min.js": "https://code.jquery.com/jquery-1.11.0.min.js",
-    "jquery.flot-0.8.2.min.js": "https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.min.js",
-    "jquery.flot-0.8.2.time.min.js": "https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.time.min.js",
-    "jquery.flot-0.8.2.selection.min.js": "https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.selection.min.js",
-    "jquery.flot-0.8.2.categories.min.js": "https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.categories.min.js",
+    "jquery.flot-0.8.3.min.js": "https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js",
+    "jquery.flot-0.8.3.time.min.js": "https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.time.min.js",
+    "jquery.flot-0.8.3.selection.min.js": "https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.selection.min.js",
+    "jquery.flot-0.8.3.categories.min.js": "https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.categories.min.js",
     "bootstrap-3.1.0.min.js": "https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js",
     "bootstrap-3.1.0.min.css": "https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css",
     "stupidtable.js": "https://github.com/joequery/Stupid-Table-Plugin/raw/1.0.1/stupidtable.js",
@@ -30,10 +30,10 @@ VENDOR_ASSETS = {
 
 LICENSE_FILES = {
     "stupidtable.js": "https://github.com/joequery/Stupid-Table-Plugin/raw/1.0.1/LICENSE",
-    "jquery.flot-0.8.2.min.js": "https://github.com/flot/flot/raw/v0.8.2/LICENSE.txt",
-    "jquery.flot-0.8.2.time.min.js": "https://github.com/flot/flot/raw/v0.8.2/LICENSE.txt",
-    "jquery.flot-0.8.2.selection.min.js": "https://github.com/flot/flot/raw/v0.8.2/LICENSE.txt",
-    "jquery.flot-0.8.2.categories.min.js": "https://github.com/flot/flot/raw/v0.8.2/LICENSE.txt",
+    "jquery.flot-0.8.3.min.js": "https://github.com/flot/flot/raw/v0.8.3/LICENSE.txt",
+    "jquery.flot-0.8.3.time.min.js": "https://github.com/flot/flot/raw/v0.8.3/LICENSE.txt",
+    "jquery.flot-0.8.3.selection.min.js": "https://github.com/flot/flot/raw/v0.8.3/LICENSE.txt",
+    "jquery.flot-0.8.3.categories.min.js": "https://github.com/flot/flot/raw/v0.8.3/LICENSE.txt",
 }
 
 VENDOR_DIR = os.path.abspath(os.path.dirname(__file__))
