@@ -7,6 +7,7 @@ Redownload asset files.
 import os
 import shutil
 import subprocess
+import argparse
 import sys
 try:
     from urllib2 import urlopen
@@ -39,14 +40,18 @@ LICENSE_FILES = {
 VENDOR_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
-def download_assets():
+def download_assets(force=False):
+    p = argparse.ArgumentParser()
+    p.add_argument("-f", "--force-redownload", action="store_true", dest="force")
+    args = p.parse_args()
+
     if not os.path.isdir(VENDOR_DIR):
         os.makedirs(VENDOR_DIR)
 
     for fn, asset in sorted(VENDOR_ASSETS.items()):
         dst = os.path.join(VENDOR_DIR, fn)
 
-        if os.path.isfile(dst):
+        if os.path.isfile(dst) and not args.force:
             continue
 
         if fn in LICENSE_FILES:
@@ -57,9 +62,9 @@ def download_assets():
             fsrc = urlopen(LICENSE_FILES[fn])
             try:
                 with open(dst + ".new", "wb") as fdst:
-                    fdst.write('/*\n')
+                    fdst.write(b'/*\n')
                     shutil.copyfileobj(fsrc, fdst)
-                    fdst.write('*/\n\n'.format(license_asset))
+                    fdst.write(b'*/\n\n')
             finally:
                 fsrc.close()
             mode = 'ab'
